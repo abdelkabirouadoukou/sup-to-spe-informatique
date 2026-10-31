@@ -1,0 +1,212 @@
+[
+  {
+    "id": "05-01",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nx = np.array([1, 2, 3]).shape\n```",
+    "choix": [
+      "(3,)",
+      "(1, 3)",
+      "(3, 1)",
+      "3"
+    ],
+    "reponse": 0,
+    "explication": "Un tableau 1D de 3 éléments a pour forme (3,)."
+  },
+  {
+    "id": "05-02",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nx = np.arange(0, 10, 2).tolist()\n```",
+    "choix": [
+      "[0, 2, 4, 6, 8, 10]",
+      "[1, 3, 5, 7, 9]",
+      "[0, 1, 2, 3, 4]",
+      "[0, 2, 4, 6, 8]"
+    ],
+    "reponse": 3,
+    "explication": "`arange(0, 10, 2)` exclut la borne 10."
+  },
+  {
+    "id": "05-03",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nx = np.linspace(0, 1, 5)[1]\n```",
+    "choix": [
+      "0.5",
+      "0.0",
+      "0.25",
+      "0.2"
+    ],
+    "reponse": 2,
+    "explication": "`linspace(0, 1, 5)` donne 0, 0.25, 0.5, 0.75, 1 : l'indice 1 vaut 0.25."
+  },
+  {
+    "id": "05-04",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 1,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nx = np.zeros((2, 3)).shape\n```",
+    "choix": [
+      "(2, 3, 1)",
+      "(2, 3)",
+      "(3, 2)",
+      "(6,)"
+    ],
+    "reponse": 1,
+    "explication": "`zeros((2, 3))` crée 2 lignes et 3 colonnes."
+  },
+  {
+    "id": "05-05",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nx = np.eye(2).tolist()\n```",
+    "choix": [
+      "[[1.0, 0.0], [0.0, 1.0]]",
+      "[[1, 1], [1, 1]]",
+      "[[0, 0], [0, 0]]",
+      "[[1, 0], [0, 0]]"
+    ],
+    "reponse": 0,
+    "explication": "`eye(2)` est la matrice identité 2×2."
+  },
+  {
+    "id": "05-06",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 3,
+    "question": "En NumPy, que renvoie un slice `a[1:4]` ?",
+    "choix": [
+      "Une copie indépendante",
+      "Un tuple",
+      "Une liste Python",
+      "Une vue sur le tableau d'origine"
+    ],
+    "reponse": 3,
+    "explication": "Contrairement aux listes, le slicing NumPy renvoie une vue ; utiliser `.copy()` pour isoler."
+  },
+  {
+    "id": "05-07",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 1,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\na = np.array([1, 2, 3])\nx = (a * 2).tolist()\n```",
+    "choix": [
+      "[3, 4, 5]",
+      "[1, 4, 9]",
+      "[2, 4, 6]",
+      "[1, 2, 3]"
+    ],
+    "reponse": 2,
+    "explication": "`a * 2` multiplie chaque élément."
+  },
+  {
+    "id": "05-08",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nM = np.array([[1, 2], [3, 4]])\nx = (M + 1).tolist()\n```",
+    "choix": [
+      "[[1, 3], [2, 4]]",
+      "[[2, 3], [4, 5]]",
+      "[[1, 2], [3, 4]]",
+      "[[2, 2], [2, 2]]"
+    ],
+    "reponse": 1,
+    "explication": "`M + 1` ajoute 1 à chaque élément."
+  },
+  {
+    "id": "05-09",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 3,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nM = np.array([[1, 2], [3, 4]])\nv = np.array([1, 10])\nx = (M * v).tolist()\n```",
+    "choix": [
+      "[[1, 20], [3, 40]]",
+      "[[1, 2], [30, 40]]",
+      "[[1, 2], [3, 4]]",
+      "[[1, 20], [3, 4]]"
+    ],
+    "reponse": 0,
+    "explication": "Le vecteur [1, 10] est diffusé sur chaque ligne (broadcasting)."
+  },
+  {
+    "id": "05-10",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Quelle est la différence entre `*` et `@` sur des tableaux NumPy ?",
+    "choix": [
+      "`*` est matriciel, `@` élément par élément",
+      "Les deux sont identiques",
+      "`@` est une division",
+      "`*` est élément par élément, `@` est le produit matriciel"
+    ],
+    "reponse": 3,
+    "explication": "Pour le produit matriciel, utiliser `@` ou `np.dot`."
+  },
+  {
+    "id": "05-11",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\nM = np.array([[0, 1, 2], [3, 4, 5]])\nx = M.sum(axis=0).tolist()\n```",
+    "choix": [
+      "[0, 1, 2]",
+      "[3, 4, 5]",
+      "[3, 5, 7]",
+      "[3, 12]"
+    ],
+    "reponse": 2,
+    "explication": "`axis=0` somme les colonnes."
+  },
+  {
+    "id": "05-12",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\na = np.array([3, 1, 4, 1, 5])\nx = a[a > 2].tolist()\n```",
+    "choix": [
+      "[1, 1]",
+      "[3, 4, 5]",
+      "[3, 1, 4, 1, 5]",
+      "[4, 5]"
+    ],
+    "reponse": 1,
+    "explication": "Le masque `a > 2` garde les éléments strictement supérieurs à 2."
+  },
+  {
+    "id": "05-13",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nimport numpy as np\na = np.array([3, 1, 9, 2])\nx = a.argmax()\n```",
+    "choix": [
+      "2",
+      "9",
+      "3",
+      "0"
+    ],
+    "reponse": 0,
+    "explication": "`argmax` renvoie l'indice du maximum (9 est à l'indice 2)."
+  },
+  {
+    "id": "05-14",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 1,
+    "question": "À quoi sert `%matplotlib inline` dans un notebook ?",
+    "choix": [
+      "Accélérer NumPy",
+      "Sauvegarder les figures",
+      "Installer Matplotlib",
+      "Afficher les figures directement dans le notebook"
+    ],
+    "reponse": 3,
+    "explication": "La magie inline intègre les graphiques à la sortie du notebook."
+  },
+  {
+    "id": "05-15",
+    "chapitre": "NumPy et Matplotlib",
+    "niveau": 2,
+    "question": "Pourquoi utiliser le backend `Agg` ?",
+    "choix": [
+      "Pour afficher plus vite à l'écran",
+      "Pour exporter en CSV",
+      "Pour tracer sans écran (serveur, CI)",
+      "Pour tracer en 3D"
+    ],
+    "reponse": 2,
+    "explication": "`Agg` est un backend non interactif, adapté aux environnements sans affichage."
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "06-01",
+    "chapitre": "SQL",
+    "niveau": 1,
+    "question": "À quoi sert la clause `WHERE` ?",
+    "choix": [
+      "Filtrer les lignes avant le regroupement",
+      "Filtrer les groupes après regroupement",
+      "Trier les résultats",
+      "Joindre deux tables"
+    ],
+    "reponse": 0,
+    "explication": "`WHERE` s'applique aux lignes ; `HAVING` s'applique aux groupes."
+  },
+  {
+    "id": "06-02",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "À quoi sert la clause `HAVING` ?",
+    "choix": [
+      "Filtrer les lignes avant `GROUP BY`",
+      "Trier les groupes",
+      "Créer une table",
+      "Filtrer les groupes après `GROUP BY`"
+    ],
+    "reponse": 3,
+    "explication": "On ne peut pas mettre un agrégat dans `WHERE` : il faut `HAVING`."
+  },
+  {
+    "id": "06-03",
+    "chapitre": "SQL",
+    "niveau": 1,
+    "question": "À quoi sert `GROUP BY` ?",
+    "choix": [
+      "Supprimer les doublons",
+      "Créer une clé primaire",
+      "Regrouper les lignes partageant une même valeur",
+      "Trier les lignes"
+    ],
+    "reponse": 2,
+    "explication": "Chaque groupe permet ensuite de calculer des agrégats (AVG, COUNT…)."
+  },
+  {
+    "id": "06-04",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Quelle est la différence entre `JOIN` et `LEFT JOIN` ?",
+    "choix": [
+      "Aucune différence",
+      "`LEFT JOIN` conserve toutes les lignes de gauche, même sans correspondance",
+      "`JOIN` conserve les lignes sans correspondance",
+      "`LEFT JOIN` supprime les doublons"
+    ],
+    "reponse": 1,
+    "explication": "`LEFT JOIN` permet de repérer les absences (élève sans note)."
+  },
+  {
+    "id": "06-05",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Pourquoi utiliser des requêtes paramétrées (`?`) ?",
+    "choix": [
+      "Pour éviter les injections SQL",
+      "Pour accélérer les jointures",
+      "Pour créer des index",
+      "Pour trier les résultats"
+    ],
+    "reponse": 0,
+    "explication": "sqlite3 échappe les valeurs passées en paramètre."
+  },
+  {
+    "id": "06-06",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Que fait `rollback()` ?",
+    "choix": [
+      "Valide les modifications",
+      "Ferme la connexion",
+      "Crée une sauvegarde",
+      "Annule les modifications depuis le dernier `commit`"
+    ],
+    "reponse": 3,
+    "explication": "`commit` valide ; `rollback` annule."
+  },
+  {
+    "id": "06-07",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Que renvoie `SELECT SUM(x) FROM t` ?\n\n```python\nimport sqlite3\nc = sqlite3.connect(\":memory:\")\nc.execute(\"CREATE TABLE t(x)\")\nc.executemany(\"INSERT INTO t VALUES (?)\", [(1,), (2,), (3,)])\n```",
+    "choix": [
+      "1",
+      "2",
+      "6",
+      "3"
+    ],
+    "reponse": 2,
+    "explication": "1 + 2 + 3 = 6."
+  },
+  {
+    "id": "06-08",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Que renvoie `SELECT COUNT(*) FROM t` ?\n\n```python\nimport sqlite3\nc = sqlite3.connect(\":memory:\")\nc.execute(\"CREATE TABLE t(x)\")\nc.executemany(\"INSERT INTO t VALUES (?)\", [(1,), (2,), (3,)])\n```",
+    "choix": [
+      "1",
+      "3",
+      "6",
+      "2"
+    ],
+    "reponse": 1,
+    "explication": "La table contient 3 lignes."
+  },
+  {
+    "id": "06-09",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Que renvoie `SELECT AVG(x) FROM t` ?\n\n```python\nimport sqlite3\nc = sqlite3.connect(\":memory:\")\nc.execute(\"CREATE TABLE t(x)\")\nc.executemany(\"INSERT INTO t VALUES (?)\", [(1,), (2,), (3,)])\n```",
+    "choix": [
+      "2.0",
+      "6.0",
+      "3.0",
+      "1.5"
+    ],
+    "reponse": 0,
+    "explication": "La moyenne de 1, 2 et 3 vaut 2.0."
+  },
+  {
+    "id": "06-10",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Que renvoie `SELECT COUNT(*) FROM t WHERE x > 1` ?\n\n```python\nimport sqlite3\nc = sqlite3.connect(\":memory:\")\nc.execute(\"CREATE TABLE t(x)\")\nc.executemany(\"INSERT INTO t VALUES (?)\", [(1,), (2,), (3,)])\n```",
+    "choix": [
+      "1",
+      "3",
+      "0",
+      "2"
+    ],
+    "reponse": 3,
+    "explication": "Seules les valeurs 2 et 3 sont strictement supérieures à 1."
+  },
+  {
+    "id": "06-11",
+    "chapitre": "SQL",
+    "niveau": 3,
+    "question": "Que renvoie le `GROUP BY g` sur cette table ?\n\n```python\nimport sqlite3\nc = sqlite3.connect(\":memory:\")\nc.execute(\"CREATE TABLE t(g, x)\")\nc.executemany(\"INSERT INTO t VALUES (?, ?)\", [(\"a\", 1), (\"a\", 2), (\"b\", 5)])\n```",
+    "choix": [
+      "[('b', 5), ('a', 3)]",
+      "[('a', 2), ('b', 1)]",
+      "[('a', 3), ('b', 5)]",
+      "[('a', 1), ('a', 2), ('b', 5)]"
+    ],
+    "reponse": 2,
+    "explication": "On groupe par `g` et on somme les `x` de chaque groupe."
+  },
+  {
+    "id": "06-12",
+    "chapitre": "SQL",
+    "niveau": 3,
+    "question": "Quelle est la différence entre `COUNT(*)` et `COUNT(colonne)` ?",
+    "choix": [
+      "`COUNT(*)` ne compte que les entiers",
+      "`COUNT(colonne)` ignore les valeurs NULL",
+      "`COUNT(*)` ignore les NULL",
+      "Les deux sont identiques"
+    ],
+    "reponse": 1,
+    "explication": "`COUNT(*)` compte toutes les lignes ; `COUNT(colonne)` compte les valeurs non NULL."
+  },
+  {
+    "id": "06-13",
+    "chapitre": "SQL",
+    "niveau": 1,
+    "question": "Que fait `ORDER BY note DESC` ?",
+    "choix": [
+      "Trie par note décroissante",
+      "Trie par note croissante",
+      "Filtre les notes nulles",
+      "Supprime les doublons"
+    ],
+    "reponse": 0,
+    "explication": "`DESC` = descending ; par défaut c'est `ASC`."
+  },
+  {
+    "id": "06-14",
+    "chapitre": "SQL",
+    "niveau": 2,
+    "question": "Que signifie `LIKE 'A%'` ?",
+    "choix": [
+      "Le texte finit par A",
+      "Le texte contient exactement A",
+      "Le texte est égal à A",
+      "Le texte commence par A"
+    ],
+    "reponse": 3,
+    "explication": "`%` remplace une suite de caractères quelconques."
+  },
+  {
+    "id": "06-15",
+    "chapitre": "SQL",
+    "niveau": 1,
+    "question": "À quoi sert `PRIMARY KEY` ?",
+    "choix": [
+      "Créer une jointure",
+      "Compter les lignes",
+      "Identifier de façon unique chaque ligne",
+      "Trier la table"
+    ],
+    "reponse": 2,
+    "explication": "La clé primaire est unique et non nulle."
+  }
+]

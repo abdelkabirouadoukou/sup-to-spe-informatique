@@ -1,0 +1,212 @@
+[
+  {
+    "id": "03-01",
+    "chapitre": "Récursivité",
+    "niveau": 1,
+    "question": "Quel est le rôle du cas de base d'une fonction récursive ?",
+    "choix": [
+      "Arrêter la récursion",
+      "Accélérer le calcul",
+      "Créer une boucle",
+      "Trier la liste"
+    ],
+    "reponse": 0,
+    "explication": "Sans cas de base, la récursion ne s'arrête jamais (RecursionError)."
+  },
+  {
+    "id": "03-02",
+    "chapitre": "Récursivité",
+    "niveau": 1,
+    "question": "Que vaut `factorielle(5)` à la fin de ce code ?\n\n```python\ndef factorielle(n):\n    return 1 if n == 0 else n * factorielle(n - 1)\n```",
+    "choix": [
+      "24",
+      "60",
+      "720",
+      "120"
+    ],
+    "reponse": 3,
+    "explication": "5! = 5×4×3×2×1 = 120."
+  },
+  {
+    "id": "03-03",
+    "chapitre": "Récursivité",
+    "niveau": 1,
+    "question": "Que vaut `factorielle(0)` à la fin de ce code ?\n\n```python\ndef factorielle(n):\n    return 1 if n == 0 else n * factorielle(n - 1)\n```",
+    "choix": [
+      "None",
+      "Une erreur",
+      "1",
+      "0"
+    ],
+    "reponse": 2,
+    "explication": "Par convention, 0! = 1 (cas de base)."
+  },
+  {
+    "id": "03-04",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Que provoque une récursion sans cas de base ?",
+    "choix": [
+      "Rien, Python optimise",
+      "Une RecursionError (profondeur de pile dépassée)",
+      "Une boucle infinie silencieuse",
+      "Une ValueError"
+    ],
+    "reponse": 1,
+    "explication": "Chaque appel empile un cadre ; au-delà de la limite, Python lève RecursionError."
+  },
+  {
+    "id": "03-05",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Quelle est la complexité de T(n) = T(n/2) + O(1) ?",
+    "choix": [
+      "O(log n)",
+      "O(n)",
+      "O(n log n)",
+      "O(1)"
+    ],
+    "reponse": 0,
+    "explication": "On divise le problème par 2 à chaque appel : log₂ n niveaux."
+  },
+  {
+    "id": "03-06",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Quelle est la complexité de T(n) = 2T(n/2) + O(n) ?",
+    "choix": [
+      "O(n)",
+      "O(log n)",
+      "O(n²)",
+      "O(n log n)"
+    ],
+    "reponse": 3,
+    "explication": "C'est la récurrence du tri fusion."
+  },
+  {
+    "id": "03-07",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Que vaut `puissance_iter(2, 10)` à la fin de ce code ?\n\n```python\ndef puissance_iter(x, n):\n    r = 1\n    while n > 0:\n        if n % 2 == 1:\n            r *= x\n        x *= x\n        n //= 2\n    return r\n```",
+    "choix": [
+      "2048",
+      "100",
+      "1024",
+      "512"
+    ],
+    "reponse": 2,
+    "explication": "L'exponentiation rapide calcule 2**10 = 1024."
+  },
+  {
+    "id": "03-08",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Quelle est la complexité temporelle de l'exponentiation rapide ?",
+    "choix": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "reponse": 1,
+    "explication": "L'exposant est divisé par 2 à chaque tour."
+  },
+  {
+    "id": "03-09",
+    "chapitre": "Récursivité",
+    "niveau": 3,
+    "question": "Que se passe-t-il si on écrit `puissance(x, n//2) * puissance(x, n//2)` ?",
+    "choix": [
+      "On fait deux appels récursifs et on retombe en O(n)",
+      "Le résultat est faux",
+      "On obtient O(log n)",
+      "Python détecte et corrige"
+    ],
+    "reponse": 0,
+    "explication": "Il faut mémoriser `y = puissance(x, n//2)` pour ne faire qu'un appel."
+  },
+  {
+    "id": "03-10",
+    "chapitre": "Récursivité",
+    "niveau": 1,
+    "question": "Que vaut `pgcd(48, 18)` à la fin de ce code ?\n\n```python\ndef pgcd(a, b):\n    return a if b == 0 else pgcd(b, a % b)\n```",
+    "choix": [
+      "12",
+      "3",
+      "18",
+      "6"
+    ],
+    "reponse": 3,
+    "explication": "Euclide : pgcd(48, 18) = pgcd(18, 12) = pgcd(12, 6) = 6."
+  },
+  {
+    "id": "03-11",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Que vaut `fib_memo(10)` à la fin de ce code ?\n\n```python\ndef fib_memo(n, memo=None):\n    if memo is None:\n        memo = {}\n    if n < 2:\n        return n\n    if n not in memo:\n        memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)\n    return memo[n]\n```",
+    "choix": [
+      "89",
+      "610",
+      "55",
+      "34"
+    ],
+    "reponse": 2,
+    "explication": "Suite de Fibonacci : F(10) = 55."
+  },
+  {
+    "id": "03-12",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Quelle est la complexité du Fibonacci récursif naïf ?",
+    "choix": [
+      "O(n²)",
+      "O(φⁿ), exponentielle",
+      "O(n)",
+      "O(n log n)"
+    ],
+    "reponse": 1,
+    "explication": "Chaque appel en engendre deux : le coût croît comme φⁿ."
+  },
+  {
+    "id": "03-13",
+    "chapitre": "Récursivité",
+    "niveau": 1,
+    "question": "Que vaut `len(hanoi(3))` à la fin de ce code ?\n\n```python\ndef hanoi(n, a, b, c, coups):\n    if n == 0:\n        return\n    hanoi(n - 1, a, c, b, coups)\n    coups.append((a, c))\n    hanoi(n - 1, b, a, c, coups)\ncoups = []\nhanoi(3, 'A', 'B', 'C', coups)\n```",
+    "choix": [
+      "7",
+      "3",
+      "8",
+      "6"
+    ],
+    "reponse": 0,
+    "explication": "Les tours de Hanoï demandent 2ⁿ − 1 coups : 2³ − 1 = 7."
+  },
+  {
+    "id": "03-14",
+    "chapitre": "Récursivité",
+    "niveau": 1,
+    "question": "Que vaut `somme_chiffres(1234)` à la fin de ce code ?\n\n```python\ndef somme_chiffres(n):\n    return n if n < 10 else n % 10 + somme_chiffres(n // 10)\n```",
+    "choix": [
+      "9",
+      "1234",
+      "4",
+      "10"
+    ],
+    "reponse": 3,
+    "explication": "1 + 2 + 3 + 4 = 10."
+  },
+  {
+    "id": "03-15",
+    "chapitre": "Récursivité",
+    "niveau": 2,
+    "question": "Quelle est la complexité spatiale d'une récursion de profondeur n ?",
+    "choix": [
+      "O(log n)",
+      "O(n²)",
+      "O(n) (un cadre de pile par appel)",
+      "O(1)"
+    ],
+    "reponse": 2,
+    "explication": "Chaque appel en attente occupe un cadre sur la pile d'appels."
+  }
+]

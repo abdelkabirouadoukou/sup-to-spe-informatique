@@ -1,0 +1,212 @@
+[
+  {
+    "id": "04-01",
+    "chapitre": "Algorithmique",
+    "niveau": 1,
+    "question": "Quel est le prérequis indispensable à la dichotomie ?",
+    "choix": [
+      "La liste doit être triée",
+      "La liste doit être vide",
+      "La liste doit contenir des entiers",
+      "La liste doit être de taille paire"
+    ],
+    "reponse": 0,
+    "explication": "Sur une liste non triée, la dichotomie renvoie un résultat faux."
+  },
+  {
+    "id": "04-02",
+    "chapitre": "Algorithmique",
+    "niveau": 1,
+    "question": "Quelle est la complexité de la recherche dichotomique ?",
+    "choix": [
+      "O(n)",
+      "O(n log n)",
+      "O(1) au pire",
+      "O(log n)"
+    ],
+    "reponse": 3,
+    "explication": "On divise la zone de recherche par 2 à chaque comparaison."
+  },
+  {
+    "id": "04-03",
+    "chapitre": "Algorithmique",
+    "niveau": 3,
+    "question": "En dichotomie, que provoque `while g < d` au lieu de `while g <= d` ?",
+    "choix": [
+      "Un résultat toujours correct",
+      "Une erreur de syntaxe",
+      "On oublie le dernier élément restant",
+      "Une boucle infinie garantie"
+    ],
+    "reponse": 2,
+    "explication": "Quand g == d, il reste un élément à tester : il faut `<=`."
+  },
+  {
+    "id": "04-04",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Que vaut `dichotomie(7, [1, 3, 5, 7, 9])` à la fin de ce code ?\n\n```python\ndef dichotomie(x, L):\n    g, d = 0, len(L) - 1\n    while g <= d:\n        m = (g + d) // 2\n        if L[m] == x:\n            return m\n        elif L[m] < x:\n            g = m + 1\n        else:\n            d = m - 1\n    return None\n```",
+    "choix": [
+      "None",
+      "3",
+      "2",
+      "4"
+    ],
+    "reponse": 1,
+    "explication": "7 est à l'indice 3 de la liste."
+  },
+  {
+    "id": "04-05",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Que vaut `dichotomie(4, [1, 3, 5, 7, 9])` à la fin de ce code ?\n\n```python\ndef dichotomie(x, L):\n    g, d = 0, len(L) - 1\n    while g <= d:\n        m = (g + d) // 2\n        if L[m] == x:\n            return m\n        elif L[m] < x:\n            g = m + 1\n        else:\n            d = m - 1\n    return None\n```",
+    "choix": [
+      "None",
+      "0",
+      "2",
+      "4"
+    ],
+    "reponse": 0,
+    "explication": "4 est absent de la liste : la fonction renvoie None."
+  },
+  {
+    "id": "04-06",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Quel est le meilleur cas du tri par insertion ?",
+    "choix": [
+      "O(1)",
+      "O(n log n)",
+      "O(n²)",
+      "O(n), sur une liste déjà triée"
+    ],
+    "reponse": 3,
+    "explication": "Si la liste est triée, la boucle interne ne se déclenche jamais."
+  },
+  {
+    "id": "04-07",
+    "chapitre": "Algorithmique",
+    "niveau": 1,
+    "question": "Quelle est la complexité garantie du tri fusion ?",
+    "choix": [
+      "O(n²) au pire",
+      "O(log n)",
+      "O(n log n) dans tous les cas",
+      "O(n)"
+    ],
+    "reponse": 2,
+    "explication": "La division est équilibrée et la fusion est linéaire."
+  },
+  {
+    "id": "04-08",
+    "chapitre": "Algorithmique",
+    "niveau": 3,
+    "question": "Pourquoi le tri fusion est-il stable ?",
+    "choix": [
+      "Parce qu'il copie la liste",
+      "Parce que la fusion utilise `<=` et prend l'élément de gauche à égalité",
+      "Parce qu'il utilise `sorted`",
+      "Parce qu'il est récursif"
+    ],
+    "reponse": 1,
+    "explication": "À égalité, l'élément de gauche est placé d'abord : l'ordre d'origine est conservé."
+  },
+  {
+    "id": "04-09",
+    "chapitre": "Algorithmique",
+    "niveau": 1,
+    "question": "Que vaut `tri_fusion([3, 1, 2])` à la fin de ce code ?\n\n```python\ndef fusion(A, B):\n    res, i, j = [], 0, 0\n    while i < len(A) and j < len(B):\n        if A[i] <= B[j]:\n            res.append(A[i]); i += 1\n        else:\n            res.append(B[j]); j += 1\n    res.extend(A[i:]); res.extend(B[j:])\n    return res\ndef tri_fusion(L):\n    if len(L) <= 1:\n        return L\n    m = len(L) // 2\n    return fusion(tri_fusion(L[:m]), tri_fusion(L[m:]))\n```",
+    "choix": [
+      "[1, 2, 3]",
+      "[3, 1, 2]",
+      "[3, 2, 1]",
+      "[1, 3, 2]"
+    ],
+    "reponse": 0,
+    "explication": "Le tri fusion renvoie une nouvelle liste triée."
+  },
+  {
+    "id": "04-10",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Que vaut `horner([1, 2, 3], 2)` à la fin de ce code ?\n\n```python\ndef horner(coeffs, x):\n    r = 0\n    for a in reversed(coeffs):\n        r = r * x + a\n    return r\n```",
+    "choix": [
+      "18",
+      "16",
+      "23",
+      "17"
+    ],
+    "reponse": 3,
+    "explication": "P(2) = 1 + 2×2 + 3×2² = 1 + 4 + 12 = 17."
+  },
+  {
+    "id": "04-11",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Quelle est la complexité de la méthode de Horner ?",
+    "choix": [
+      "O(log n)",
+      "O(1)",
+      "O(n) pour un polynôme de degré n",
+      "O(n²)"
+    ],
+    "reponse": 2,
+    "explication": "Une multiplication et une addition par coefficient."
+  },
+  {
+    "id": "04-12",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Quelle structure utilise le parcours en largeur (BFS) ?",
+    "choix": [
+      "Une matrice",
+      "Une file (FIFO)",
+      "Une pile (LIFO)",
+      "Un tas"
+    ],
+    "reponse": 1,
+    "explication": "BFS explore niveau par niveau : on enfile les voisins."
+  },
+  {
+    "id": "04-13",
+    "chapitre": "Algorithmique",
+    "niveau": 2,
+    "question": "Quelle structure utilise le parcours en profondeur (DFS) itératif ?",
+    "choix": [
+      "Une pile (LIFO)",
+      "Une file (FIFO)",
+      "Un dictionnaire trié",
+      "Un tas"
+    ],
+    "reponse": 0,
+    "explication": "DFS empile les voisins et dépile le dernier : LIFO."
+  },
+  {
+    "id": "04-14",
+    "chapitre": "Algorithmique",
+    "niveau": 3,
+    "question": "Que vaut `bfs({0: [1], 1: [0, 2], 2: [1]}, 0)[2]` à la fin de ce code ?\n\n```python\nfrom collections import deque\ndef bfs(succ, depart):\n    dist = {depart: 0}\n    file = deque([depart])\n    while file:\n        u = file.popleft()\n        for v in succ.get(u, ()):\n            if v not in dist:\n                dist[v] = dist[u] + 1\n                file.append(v)\n    return dist\n```",
+    "choix": [
+      "0",
+      "1",
+      "3",
+      "2"
+    ],
+    "reponse": 3,
+    "explication": "Le sommet 2 est à distance 2 du sommet 0."
+  },
+  {
+    "id": "04-15",
+    "chapitre": "Algorithmique",
+    "niveau": 1,
+    "question": "Que vaut `adj[0][1]` à la fin de ce code ?\n\n```python\nadj = [[0] * 3 for _ in range(3)]\nadj[0][1] = 1\nadj[1][0] = 1\n```",
+    "choix": [
+      "2",
+      "None",
+      "1",
+      "0"
+    ],
+    "reponse": 2,
+    "explication": "Une arête (0, 1) met 1 dans la matrice, symétriquement."
+  }
+]

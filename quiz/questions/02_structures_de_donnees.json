@@ -1,0 +1,212 @@
+[
+  {
+    "id": "02-01",
+    "chapitre": "Structures de données",
+    "niveau": 1,
+    "question": "Quelle est la complexité de `L.pop(0)` sur une liste de n éléments ?",
+    "choix": [
+      "O(n)",
+      "O(1)",
+      "O(log n)",
+      "O(n log n)"
+    ],
+    "reponse": 0,
+    "explication": "Retirer le premier élément décale les n-1 autres : O(n)."
+  },
+  {
+    "id": "02-02",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Quelle est la complexité de `L.append(x)` en moyenne ?",
+    "choix": [
+      "O(n)",
+      "O(log n)",
+      "O(n²)",
+      "O(1) amorti"
+    ],
+    "reponse": 3,
+    "explication": "L'ajout en fin de tableau dynamique est O(1) amorti."
+  },
+  {
+    "id": "02-03",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Que vaut `L` à la fin de ce code ?\n\n```python\nL = [1, 2]\nL.append([3, 4])\n```",
+    "choix": [
+      "[3, 4, 1, 2]",
+      "[[1, 2], 3, 4]",
+      "[1, 2, [3, 4]]",
+      "[1, 2, 3, 4]"
+    ],
+    "reponse": 2,
+    "explication": "`append` ajoute un seul élément : ici la liste [3, 4]."
+  },
+  {
+    "id": "02-04",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Que vaut `L` à la fin de ce code ?\n\n```python\nL = [1, 2]\nL.extend([3, 4])\n```",
+    "choix": [
+      "[1, 2]",
+      "[1, 2, 3, 4]",
+      "[1, 2, [3, 4]]",
+      "[3, 4]"
+    ],
+    "reponse": 1,
+    "explication": "`extend` ajoute tous les éléments de la séquence."
+  },
+  {
+    "id": "02-05",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nx = \"-\".join([\"a\", \"b\", \"c\"])\n```",
+    "choix": [
+      "a-b-c",
+      "abc",
+      "a b c",
+      "['a', 'b', 'c']"
+    ],
+    "reponse": 0,
+    "explication": "`join` colle les éléments avec le séparateur donné."
+  },
+  {
+    "id": "02-06",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Que vaut `A` à la fin de ce code ?\n\n```python\nA = [1, 2]\nB = A\nB[0] = 9\n```",
+    "choix": [
+      "[1, 2]",
+      "[1, 9]",
+      "[9, 2, 0]",
+      "[9, 2]"
+    ],
+    "reponse": 3,
+    "explication": "`B = A` crée un alias : modifier B modifie A."
+  },
+  {
+    "id": "02-07",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Que vaut `A` à la fin de ce code ?\n\n```python\nA = [1, 2]\nC = A.copy()\nC[0] = 9\n```",
+    "choix": [
+      "[1, 9]",
+      "[9, 2, 0]",
+      "[1, 2]",
+      "[9, 2]"
+    ],
+    "reponse": 2,
+    "explication": "`copy` crée une copie indépendante : modifier C ne change pas A."
+  },
+  {
+    "id": "02-08",
+    "chapitre": "Structures de données",
+    "niveau": 3,
+    "question": "Que vaut `M[1][0]` à la fin de ce code ?\n\n```python\nM = [[0] * 2] * 2\nM[0][0] = 1\n```",
+    "choix": [
+      "None",
+      "1",
+      "0",
+      "2"
+    ],
+    "reponse": 1,
+    "explication": "`[[0]*2]*2` partage la même ligne : toutes les lignes changent."
+  },
+  {
+    "id": "02-09",
+    "chapitre": "Structures de données",
+    "niveau": 3,
+    "question": "Que vaut `Z[0][0]` à la fin de ce code ?\n\n```python\nimport copy\nX = [[1, 2]]\nZ = copy.deepcopy(X)\nX[0][0] = 9\n```",
+    "choix": [
+      "1",
+      "9",
+      "0",
+      "None"
+    ],
+    "reponse": 0,
+    "explication": "`deepcopy` copie récursivement : Z reste indépendant de X."
+  },
+  {
+    "id": "02-10",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Pour une file FIFO, quelle opération est en O(1) ?",
+    "choix": [
+      "`list.pop(0)`",
+      "`list.pop()`",
+      "`list.insert(0, x)`",
+      "`deque.popleft()`"
+    ],
+    "reponse": 3,
+    "explication": "`deque` retire en tête en O(1) ; `list.pop(0)` est en O(n)."
+  },
+  {
+    "id": "02-11",
+    "chapitre": "Structures de données",
+    "niveau": 1,
+    "question": "Une pile LIFO retire…",
+    "choix": [
+      "le plus petit élément",
+      "un élément au hasard",
+      "le dernier élément entré",
+      "le premier élément entré"
+    ],
+    "reponse": 2,
+    "explication": "LIFO = Last In, First Out : dernier entré, premier sorti."
+  },
+  {
+    "id": "02-12",
+    "chapitre": "Structures de données",
+    "niveau": 3,
+    "question": "Que vaut `bp(\"([)]\")` à la fin de ce code ?\n\n```python\ndef bp(s):\n    pile = []\n    paires = {\")\": \"(\", \"]\": \"[\"}\n    for c in s:\n        if c in \"([\":\n            pile.append(c)\n        elif c in paires:\n            if not pile or pile.pop() != paires[c]:\n                return False\n    return not pile\n```",
+    "choix": [
+      "Une erreur",
+      "False",
+      "True",
+      "None"
+    ],
+    "reponse": 1,
+    "explication": "L'ordre d'ouverture/fermeture est incorrect : la fonction renvoie False."
+  },
+  {
+    "id": "02-13",
+    "chapitre": "Structures de données",
+    "niveau": 1,
+    "question": "Que vaut `x` à la fin de ce code ?\n\n```python\nx = len(set([1, 2, 2, 3]))\n```",
+    "choix": [
+      "3",
+      "4",
+      "2",
+      "1"
+    ],
+    "reponse": 0,
+    "explication": "Un ensemble élimine les doublons : {1, 2, 3}."
+  },
+  {
+    "id": "02-14",
+    "chapitre": "Structures de données",
+    "niveau": 1,
+    "question": "Un tuple est…",
+    "choix": [
+      "mutable",
+      "non ordonné",
+      "toujours vide",
+      "immuable"
+    ],
+    "reponse": 3,
+    "explication": "On ne peut pas modifier un tuple après sa création."
+  },
+  {
+    "id": "02-15",
+    "chapitre": "Structures de données",
+    "niveau": 2,
+    "question": "Que vaut `(a, b)` à la fin de ce code ?\n\n```python\na, b = 1, 2\na, b = b, a\n```",
+    "choix": [
+      "(2, 2)",
+      "(1, 1)",
+      "(2, 1)",
+      "(1, 2)"
+    ],
+    "reponse": 2,
+    "explication": "L'échange `a, b = b, a` passe par un tuple."
+  }
+]

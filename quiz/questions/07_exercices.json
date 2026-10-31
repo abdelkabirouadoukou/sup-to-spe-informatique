@@ -1,0 +1,212 @@
+[
+  {
+    "id": "07-01",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `somme_chiffres(987)` à la fin de ce code ?\n\n```python\ndef somme_chiffres(n):\n    return n if n < 10 else n % 10 + somme_chiffres(n // 10)\n```",
+    "choix": [
+      "24",
+      "9",
+      "15",
+      "27"
+    ],
+    "reponse": 0,
+    "explication": "9 + 8 + 7 = 24."
+  },
+  {
+    "id": "07-02",
+    "chapitre": "Exercices",
+    "niveau": 1,
+    "question": "Que vaut `renverse([1, 2, 3])` à la fin de ce code ?\n\n```python\ndef renverse(L):\n    return L[::-1]\n```",
+    "choix": [
+      "[1, 2, 3]",
+      "[3, 2]",
+      "[1, 3, 2]",
+      "[3, 2, 1]"
+    ],
+    "reponse": 3,
+    "explication": "Le slicing `[::-1]` inverse la liste."
+  },
+  {
+    "id": "07-03",
+    "chapitre": "Exercices",
+    "niveau": 1,
+    "question": "Que vaut `est_triee([1, 2, 2])` à la fin de ce code ?\n\n```python\ndef est_triee(L):\n    return all(L[i] <= L[i + 1] for i in range(len(L) - 1))\n```",
+    "choix": [
+      "2",
+      "None",
+      "True",
+      "False"
+    ],
+    "reponse": 2,
+    "explication": "La liste est croissante au sens large (égalités autorisées)."
+  },
+  {
+    "id": "07-04",
+    "chapitre": "Exercices",
+    "niveau": 1,
+    "question": "Que vaut `a_doublon([1, 2, 3])` à la fin de ce code ?\n\n```python\ndef a_doublon(L):\n    return len(set(L)) != len(L)\n```",
+    "choix": [
+      "None",
+      "False",
+      "True",
+      "3"
+    ],
+    "reponse": 1,
+    "explication": "Aucun élément n'est répété."
+  },
+  {
+    "id": "07-05",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `compter_occurrences(\"aab\")` à la fin de ce code ?\n\n```python\ndef compter_occurrences(L):\n    compteur = {}\n    for x in L:\n        compteur[x] = compteur.get(x, 0) + 1\n    return compteur\n```",
+    "choix": [
+      "{'a': 2, 'b': 1}",
+      "{'a': 1, 'b': 2}",
+      "{'a': 2, 'b': 2}",
+      "['a', 'a', 'b']"
+    ],
+    "reponse": 0,
+    "explication": "Le dictionnaire compte chaque lettre."
+  },
+  {
+    "id": "07-06",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `maximum_dichotomie([4, 1, 9, 2])` à la fin de ce code ?\n\n```python\ndef maximum_dichotomie(L, g=0, d=None):\n    if d is None:\n        d = len(L) - 1\n    if g == d:\n        return L[g]\n    m = (g + d) // 2\n    return max(maximum_dichotomie(L, g, m), maximum_dichotomie(L, m + 1, d))\n```",
+    "choix": [
+      "4",
+      "2",
+      "1",
+      "9"
+    ],
+    "reponse": 3,
+    "explication": "Le maximum est 9."
+  },
+  {
+    "id": "07-07",
+    "chapitre": "Exercices",
+    "niveau": 1,
+    "question": "Que vaut `puissance_iter(3, 4)` à la fin de ce code ?\n\n```python\ndef puissance_iter(x, n):\n    r = 1\n    while n > 0:\n        if n % 2 == 1:\n            r *= x\n        x *= x\n        n //= 2\n    return r\n```",
+    "choix": [
+      "64",
+      "27",
+      "81",
+      "12"
+    ],
+    "reponse": 2,
+    "explication": "3⁴ = 81."
+  },
+  {
+    "id": "07-08",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `dichotomie(9, [1, 3, 9])` à la fin de ce code ?\n\n```python\ndef dichotomie(x, L):\n    g, d = 0, len(L) - 1\n    while g <= d:\n        m = (g + d) // 2\n        if L[m] == x:\n            return m\n        elif L[m] < x:\n            g = m + 1\n        else:\n            d = m - 1\n    return None\n```",
+    "choix": [
+      "None",
+      "2",
+      "0",
+      "1"
+    ],
+    "reponse": 1,
+    "explication": "9 est à l'indice 2."
+  },
+  {
+    "id": "07-09",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `fusion([1, 4], [2, 3])` à la fin de ce code ?\n\n```python\ndef fusion(A, B):\n    res, i, j = [], 0, 0\n    while i < len(A) and j < len(B):\n        if A[i] <= B[j]:\n            res.append(A[i]); i += 1\n        else:\n            res.append(B[j]); j += 1\n    res.extend(A[i:]); res.extend(B[j:])\n    return res\n```",
+    "choix": [
+      "[1, 2, 3, 4]",
+      "[1, 4, 2, 3]",
+      "[1, 2, 4, 3]",
+      "[2, 3, 1, 4]"
+    ],
+    "reponse": 0,
+    "explication": "La fusion de deux listes triées reste triée."
+  },
+  {
+    "id": "07-10",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `crible(10)` à la fin de ce code ?\n\n```python\ndef crible(n):\n    if n < 2:\n        return []\n    est_premier = [True] * (n + 1)\n    est_premier[0] = est_premier[1] = False\n    for p in range(2, int(n**0.5) + 1):\n        if est_premier[p]:\n            for multiple in range(p * p, n + 1, p):\n                est_premier[multiple] = False\n    return [k for k in range(n + 1) if est_premier[k]]\n```",
+    "choix": [
+      "[2, 3, 5, 7, 9]",
+      "[1, 2, 3, 5, 7]",
+      "[2, 3, 5]",
+      "[2, 3, 5, 7]"
+    ],
+    "reponse": 3,
+    "explication": "Les nombres premiers inférieurs ou égaux à 10 sont 2, 3, 5 et 7."
+  },
+  {
+    "id": "07-11",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Quelle est la complexité du crible d'Ératosthène ?",
+    "choix": [
+      "O(n log n)",
+      "O(n)",
+      "O(n log log n)",
+      "O(n²)"
+    ],
+    "reponse": 2,
+    "explication": "Chaque premier raye ses multiples ; le coût total est O(n log log n)."
+  },
+  {
+    "id": "07-12",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Quelle est la complexité de la fusion de deux listes triées de tailles n et m ?",
+    "choix": [
+      "O(log n)",
+      "O(n + m)",
+      "O(n × m)",
+      "O(n log n)"
+    ],
+    "reponse": 1,
+    "explication": "On parcourt chaque liste une seule fois."
+  },
+  {
+    "id": "07-13",
+    "chapitre": "Exercices",
+    "niveau": 2,
+    "question": "Que vaut `len(crible(30))` à la fin de ce code ?\n\n```python\ndef crible(n):\n    if n < 2:\n        return []\n    est_premier = [True] * (n + 1)\n    est_premier[0] = est_premier[1] = False\n    for p in range(2, int(n**0.5) + 1):\n        if est_premier[p]:\n            for multiple in range(p * p, n + 1, p):\n                est_premier[multiple] = False\n    return [k for k in range(n + 1) if est_premier[k]]\n```",
+    "choix": [
+      "10",
+      "9",
+      "11",
+      "8"
+    ],
+    "reponse": 0,
+    "explication": "Il y a 10 nombres premiers ≤ 30 (2, 3, 5, 7, 11, 13, 17, 19, 23, 29)."
+  },
+  {
+    "id": "07-14",
+    "chapitre": "Exercices",
+    "niveau": 1,
+    "question": "Quelle est la complexité de `L[::-1]` pour renverser une liste ?",
+    "choix": [
+      "O(1)",
+      "O(log n)",
+      "O(n²)",
+      "O(n)"
+    ],
+    "reponse": 3,
+    "explication": "Il faut copier les n éléments dans une nouvelle liste."
+  },
+  {
+    "id": "07-15",
+    "chapitre": "Exercices",
+    "niveau": 1,
+    "question": "Que vaut `somme_chiffres(1000)` à la fin de ce code ?\n\n```python\ndef somme_chiffres(n):\n    return n if n < 10 else n % 10 + somme_chiffres(n // 10)\n```",
+    "choix": [
+      "4",
+      "1000",
+      "1",
+      "0"
+    ],
+    "reponse": 2,
+    "explication": "1 + 0 + 0 + 0 = 1."
+  }
+]
