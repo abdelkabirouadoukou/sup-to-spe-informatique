@@ -1,0 +1,50 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+.installed.cfg
+*.egg
+
+# --- Environnements virtuels ---
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.nbconvert.ipynb
+jupyter_execute/
+
+# --- Tests / outils ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# --- Build / distribution ---
+build/
+dist/
+*.spec
+*.manifest
+*.app/
+
+# --- Données personnelles / historique du quiz ---
+quiz/historique.json
+
+# --- Système / éditeurs ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
