@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "revision-cpge"
+version = "0.2.0"
+description = "Révision d'informatique CPGE (Sup → Spé) : bibliothèque Python réutilisable"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Abdelkabir Ouadoukou", email = "abdelkabir.ouadoukou@gmail.com" }]
+keywords = ["cpge", "informatique", "algorithmique", "python", "revision"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

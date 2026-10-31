@@ -44,13 +44,27 @@ GitHub Releases.
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate   # Windows : .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt                      # inclut "-e ." (layout src/)
+pip install -e .                                     # équivalent seul : rend revision importable
 pytest -q                                            # tests unitaires + JSON
 pytest --nbmake notebooks -q                         # exécution des notebooks
 python quiz/quiz_app.py                              # lancer le quiz
 bash scripts/build_exe.sh                            # build local macOS/Linux
 scripts\build_exe.bat                                # build Windows (local)
 ```
+
+### Package `revision` (layout `src/`)
+
+`pyproject.toml` déclare le package `revision` avec `package-dir = {"": "src"}`.
+Après `pip install -e .` (ou `pip install -r requirements.txt` qui contient
+`-e .`), on peut écrire depuis un notebook ou un test :
+
+```python
+from revision import dichotomie, tri_fusion, puissance_iter
+```
+
+Sans installation, l'import échoue : lancer les commandes **depuis la racine**
+du dépôt et avec l'environnement virtuel activé.
 
 ## Git
 

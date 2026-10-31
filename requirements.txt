@@ -11,3 +11,7 @@ nbmake>=1.5
 
 # --- Exécutable ---
 pyinstaller>=6.0
+
+# --- Projet (installation éditable, layout src/) ---
+# À lancer depuis la racine du dépôt : rend "from revision import ..." disponible.
+-e .
