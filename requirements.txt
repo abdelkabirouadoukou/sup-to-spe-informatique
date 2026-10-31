@@ -1,4 +1,5 @@
 # --- Notebooks ---
+jupyter>=1.0
 jupyterlab>=4.0
 notebook>=7.0
 numpy>=1.26
