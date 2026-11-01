@@ -19,10 +19,17 @@ from datetime import datetime
 from pathlib import Path
 from typing import Callable, Iterable, Optional
 
+# Console Windows : forcer l'UTF-8 pour les accents et les emojis.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except (AttributeError, ValueError, OSError):
+    pass
+
 LETTRES = "ABCD"
 DUREE_EXAMEN_SECONDES = 300
 NOMBRE_ALEATOIRE = 10
 NOMBRE_EXAMEN = 20
+NOMBRE_QUESTIONS_ATTENDU = 105
 
 
 # ---------------------------------------------------------------------------
@@ -363,8 +370,38 @@ def menu_principal(
             sortie("Choix invalide : tape un numéro entre 1 et 5.")
 
 
+def self_test(sortie: Optional[Callable[[str], None]] = None) -> int:
+    """Vérifie le chargement des questions sans interaction.
+
+    Affiche ``OK`` et renvoie 0 si les 105 questions sont présentes et valides,
+    sinon affiche la cause et renvoie 1.
+    """
+    sortie = sortie or print
+    questions = charger_questions()
+    if len(questions) != NOMBRE_QUESTIONS_ATTENDU:
+        sortie(
+            f"ÉCHEC : {len(questions)} question(s) chargée(s), "
+            f"{NOMBRE_QUESTIONS_ATTENDU} attendues."
+        )
+        return 1
+    for question in questions:
+        choix = question.get("choix")
+        reponse = question.get("reponse")
+        if not isinstance(choix, list) or len(choix) != 4:
+            sortie(f"ÉCHEC : question {question.get('id')!r} sans 4 choix.")
+            return 1
+        if not isinstance(reponse, int) or not 0 <= reponse < 4:
+            sortie(f"ÉCHEC : question {question.get('id')!r} avec un index invalide.")
+            return 1
+    sortie("OK")
+    return 0
+
+
 def main(argv: Optional[list[str]] = None, historique: Optional[Path] = None) -> int:
-    """Point d'entrée : crée l'historique puis lance le menu."""
+    """Point d'entrée : ``--self-test`` ou menu interactif."""
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    if "--self-test" in arguments:
+        return self_test()
     assurer_historique(historique)
     try:
         menu_principal(historique=historique)

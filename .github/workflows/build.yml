@@ -1,0 +1,53 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Tests unitaires
+        run: pytest -q
+
+      - name: Construire l'exécutable
+        run: >
+          python -m PyInstaller --noconfirm --clean --onefile
+          --name quiz_revision
+          --add-data "quiz/questions;questions"
+          quiz/quiz_app.py
+
+      - name: Auto-test de l'exécutable
+        run: dist\quiz_revision.exe --self-test
+
+      - name: Publier l'artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiz_revision-windows
+          path: dist/quiz_revision.exe
+          if-no-files-found: error
+
+      - name: Créer la Release (tag v* uniquement)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/quiz_revision.exe
+          generate_release_notes: true

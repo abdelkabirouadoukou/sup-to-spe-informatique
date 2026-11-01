@@ -2,6 +2,8 @@
 
 import importlib.util
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -244,3 +246,38 @@ def test_chemins_pyinstaller(monkeypatch, tmp_path):
     assert quiz_app.dossier_ressources() == tmp_path / "meipass"
     assert quiz_app.dossier_questions() == tmp_path / "meipass" / "questions"
     assert quiz_app.chemin_historique() == executable.resolve().parent / "historique.json"
+
+
+def test_self_test_ok(monkeypatch, capsys):
+    monkeypatch.setattr(
+        quiz_app,
+        "charger_questions",
+        lambda: [question(qid=f"q{i}") for i in range(quiz_app.NOMBRE_QUESTIONS_ATTENDU)],
+    )
+    assert quiz_app.main(["--self-test"]) == 0
+    assert capsys.readouterr().out.strip() == "OK"
+
+
+def test_self_test_mauvais_nombre(monkeypatch, capsys):
+    monkeypatch.setattr(quiz_app, "charger_questions", lambda: [question()])
+    assert quiz_app.main(["--self-test"]) == 1
+    assert "ÉCHEC" in capsys.readouterr().out
+
+
+def test_self_test_index_invalide(monkeypatch, capsys):
+    questions = [question(qid=f"q{i}") for i in range(quiz_app.NOMBRE_QUESTIONS_ATTENDU)]
+    questions[0]["reponse"] = 9
+    monkeypatch.setattr(quiz_app, "charger_questions", lambda: questions)
+    assert quiz_app.main(["--self-test"]) == 1
+    assert "index invalide" in capsys.readouterr().out
+
+
+def test_self_test_en_sous_processus():
+    resultat = subprocess.run(
+        [sys.executable, str(RACINE / "quiz" / "quiz_app.py"), "--self-test"],
+        capture_output=True,
+        text=True,
+        cwd=str(RACINE),
+    )
+    assert resultat.returncode == 0, resultat.stderr
+    assert resultat.stdout.strip() == "OK"
